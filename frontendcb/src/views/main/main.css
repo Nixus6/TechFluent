@@ -1,0 +1,12 @@
+.Fondo{
+    background-image: url("./img/LivingRoom.jpg");
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#NavLinkTop{
+    color: #fff;
+}
+#NavLinkDown{
+  color: #1a1a1a;
+  }

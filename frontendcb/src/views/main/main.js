@@ -1,12 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react'
-import image from './img/rent.jpg'
-import './login.css'
+import Navbar from '../../components/navbar/navbar'
+import './main.css'
 const API = process.env.REACT_APP_API;
 
-export const Main = () => {
+function Main() {
     return (
-        <h1>
-Main
-        </h1>
+        <>
+            <Navbar />
+            <section className="Fondo" />
+            <h1>
+                Landing Page
+            </h1>
+        </>
     )
 }
+export default Main;

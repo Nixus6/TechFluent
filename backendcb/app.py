@@ -10,6 +10,7 @@ app.config['MONGO_URI'] = 'mongodb://localhost/BDCB'
 mongo = PyMongo(app)
 CORS(app)
 dbU = mongo.db.users
+dbP = mongo.db.properties
 
 
 @app.route('/users', methods=['POST'])
@@ -31,12 +32,14 @@ def create_user():
 
 @app.route('/login', methods=['POST'])
 def getLogin():
-    Request_password = generate_password_hash(request.json['password'])
+
     user = dbU.find_one({'email': request.json['email']})
 
-    if user['password'] == Request_password:
+    result = check_password_hash(user['password'], request.json['password'])
+
+    if result == True:
         return jsonify({
-            '_id': str(ObjectId(user['_id'])),
+            'id': str(ObjectId(user['_id'])),
             'document': user['document'],
             'name': user['name'],
             'lastname': user['lastname'],
